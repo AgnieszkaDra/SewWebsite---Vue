@@ -105,6 +105,7 @@ header {
   .menu-icon {
     cursor: pointer;
     transition: background-color 0.3s ease;
+  
   }
 
   .menu-icon.active {
