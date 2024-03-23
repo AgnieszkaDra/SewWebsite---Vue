@@ -3,6 +3,8 @@ import { RouterView } from 'vue-router'
 import HamburgerIcon from './components/icons/IconHamburger.vue'
 import CloseMenuIcon from './components/icons/IconCloseMenu.vue'
 import Navigation from './components/Navigation/NavigationComponent.vue'
+import carouselImages from '../data/carousel.js'
+import Carousel from './components/Carousel/CarouselComponent.vue'
 import { ref } from 'vue';
 
 const navbarOpen = ref(false);
@@ -20,11 +22,19 @@ const handleToggle = () => {
       </div>
       <Navigation :isNavbarOpen="navbarOpen"/> 
     </div>
+    <Carousel :images="carouselImages"></Carousel>
   </header>
   <RouterView />
 </template>
 
 <style scoped lang="scss">
+* {
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
 header {
   line-height: 1.5;
   height: 100vh;
@@ -40,7 +50,8 @@ header {
     position: absolute;
     top: 17px;
     left: 20px;
-    color: var(--color-heading)
+    color: var(--color-heading);
+    z-index: 20;
 }
 //  .wrapper {
 //     display: flex;
@@ -73,23 +84,23 @@ header {
     border: 0;
   }
 
-  @media (min-width: 1024px) {
-    header {
-      padding-right: calc(var(--section-gap) / 2);
-    }
+  // @media (min-width: 1024px) {
+  //   header {
+  //     padding-right: calc(var(--section-gap) / 2);
+  //   }
 
-    .header .wrapper {
-      flex-wrap: wrap;
-    }
+  //   .header .wrapper {
+  //     flex-wrap: wrap;
+  //   }
 
-    nav {
-      text-align: left;
-      margin-left: -1rem;
-      font-size: 1rem;
-      padding: 1rem 0;
-      margin-top: 1rem;
-    }
-  }
+  //   nav {
+  //     text-align: left;
+  //     margin-left: -1rem;
+  //     font-size: 1rem;
+  //     padding: 1rem 0;
+  //     margin-top: 1rem;
+  //   }
+  // }
 
   .menu-icon {
     cursor: pointer;
