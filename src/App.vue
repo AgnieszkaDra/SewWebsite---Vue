@@ -3,6 +3,9 @@ import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 import HamburgerIcon from './components/icons/IconHamburger.vue'
 import CloseMenuIcon from './components/icons/IconCloseMenu.vue'
+import Navigation from './components/Navigation/NavigationComponent.vue'
+import carouselImages from '../data/carousel.js'
+import Carousel from './components/Carousel/CarouselComponent.vue'
 import { ref } from 'vue';
 
 const navbarOpen = ref(false);
@@ -22,12 +25,13 @@ const handleToggle = () => {
         <HamburgerIcon v-if="!navbarOpen" />
         <CloseMenuIcon v-else />
       </div>
-
+      <Navigation :isNavbarOpen="navbarOpen"/> 
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
       </nav>
     </div>
+    <Carousel :images="carouselImages"></Carousel>
   </header>
 
   <RouterView />
