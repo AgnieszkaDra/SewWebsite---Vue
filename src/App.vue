@@ -1,54 +1,63 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import { RouterView } from 'vue-router'
 import HamburgerIcon from './components/icons/IconHamburger.vue'
 import CloseMenuIcon from './components/icons/IconCloseMenu.vue'
 import Navigation from './components/Navigation/NavigationComponent.vue'
+import carouselImages from '../data/carousel.js'
+import Carousel from './components/Carousel/CarouselComponent.vue'
 import { ref } from 'vue';
 
 const navbarOpen = ref(false);
-
 const handleToggle = () => {
   navbarOpen.value = !navbarOpen.value;
 };
 </script>
 
 <template>
-  <header class="header">
-    <img alt="Vue logo" class="header__logo" src="@/assets/logo.svg" width="125" height="125" />
-
+  <header>
     <div class="wrapper">
-      <HelloWorld msg="You did it!" />
       <div @click="handleToggle" class="menu-icon" :class="{ active: navbarOpen }">
         <HamburgerIcon v-if="!navbarOpen" />
         <CloseMenuIcon v-else />
       </div>
       <Navigation :isNavbarOpen="navbarOpen"/> 
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
     </div>
+    <Carousel :images="carouselImages"></Carousel>
   </header>
-
   <RouterView />
 </template>
 
 <style scoped lang="scss">
-.header {
+* {
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+header {
   line-height: 1.5;
-  max-height: 100vh;
+  height: 100vh;
+}
 
-  &__logo {
-    display: block;
-    margin: 0 auto 2rem;
-  }
+.wrapper {
+  position: relative;
+}
 
-  .wrapper {
-    display: flex;
-    place-items: center;
-    justify-content: space-between;
-  }
+.menu-icon {
+  height: 26px;
+    width: 32px;
+    position: absolute;
+    top: 17px;
+    left: 20px;
+    color: var(--color-heading);
+    z-index: 20;
+}
+//  .wrapper {
+//     display: flex;
+//     place-items: center;
+//     justify-content: space-between;
+//   }
 
   nav {
     width: 100%;
@@ -75,23 +84,23 @@ const handleToggle = () => {
     border: 0;
   }
 
-  @media (min-width: 1024px) {
-    header {
-      padding-right: calc(var(--section-gap) / 2);
-    }
+  // @media (min-width: 1024px) {
+  //   header {
+  //     padding-right: calc(var(--section-gap) / 2);
+  //   }
 
-    .header .wrapper {
-      flex-wrap: wrap;
-    }
+  //   .header .wrapper {
+  //     flex-wrap: wrap;
+  //   }
 
-    nav {
-      text-align: left;
-      margin-left: -1rem;
-      font-size: 1rem;
-      padding: 1rem 0;
-      margin-top: 1rem;
-    }
-  }
+  //   nav {
+  //     text-align: left;
+  //     margin-left: -1rem;
+  //     font-size: 1rem;
+  //     padding: 1rem 0;
+  //     margin-top: 1rem;
+  //   }
+  // }
 
   .menu-icon {
     cursor: pointer;
@@ -101,5 +110,5 @@ const handleToggle = () => {
   .menu-icon.active {
     background-color: lightblue; /* Change this to the desired background color */
   }
-}
+
 </style>
