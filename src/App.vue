@@ -1,54 +1,52 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import { RouterView } from 'vue-router'
 import HamburgerIcon from './components/icons/IconHamburger.vue'
 import CloseMenuIcon from './components/icons/IconCloseMenu.vue'
 import Navigation from './components/Navigation/NavigationComponent.vue'
 import { ref } from 'vue';
 
 const navbarOpen = ref(false);
-
 const handleToggle = () => {
   navbarOpen.value = !navbarOpen.value;
 };
 </script>
 
 <template>
-  <header class="header">
-    <img alt="Vue logo" class="header__logo" src="@/assets/logo.svg" width="125" height="125" />
-
+  <header>
     <div class="wrapper">
-      <HelloWorld msg="You did it!" />
       <div @click="handleToggle" class="menu-icon" :class="{ active: navbarOpen }">
         <HamburgerIcon v-if="!navbarOpen" />
         <CloseMenuIcon v-else />
       </div>
       <Navigation :isNavbarOpen="navbarOpen"/> 
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
     </div>
   </header>
-
   <RouterView />
 </template>
 
 <style scoped lang="scss">
-.header {
+header {
   line-height: 1.5;
-  max-height: 100vh;
+  height: 100vh;
+}
 
-  &__logo {
-    display: block;
-    margin: 0 auto 2rem;
-  }
+.wrapper {
+  position: relative;
+}
 
-  .wrapper {
-    display: flex;
-    place-items: center;
-    justify-content: space-between;
-  }
+.menu-icon {
+  height: 26px;
+    width: 32px;
+    position: absolute;
+    top: 17px;
+    left: 20px;
+    color: var(--color-heading)
+}
+//  .wrapper {
+//     display: flex;
+//     place-items: center;
+//     justify-content: space-between;
+//   }
 
   nav {
     width: 100%;
@@ -101,5 +99,5 @@ const handleToggle = () => {
   .menu-icon.active {
     background-color: lightblue; /* Change this to the desired background color */
   }
-}
+
 </style>
