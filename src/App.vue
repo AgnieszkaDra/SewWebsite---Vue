@@ -38,6 +38,7 @@ const handleToggle = () => {
 header {
   line-height: 1.5;
   height: 100vh;
+  overflow-x: hidden;
 }
 
 .wrapper {
