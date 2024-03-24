@@ -16,9 +16,9 @@ const handleToggle = () => {
 <template>
   <header>
     <div class="wrapper">
-      <div @click="handleToggle" class="menu-icon" :class="{ active: navbarOpen }">
-        <HamburgerIcon v-if="!navbarOpen" />
-        <CloseMenuIcon v-else />
+      <div @click="handleToggle" class="menu-icon" :class="{ close: navbarOpen }">
+        <HamburgerIcon v-if="!navbarOpen" class="icon--open"/>
+        <CloseMenuIcon v-else class="icon--close"/>
       </div>
       <Navigation :isNavbarOpen="navbarOpen"/> 
     </div>
@@ -28,6 +28,7 @@ const handleToggle = () => {
 </template>
 
 <style scoped lang="scss">
+
 * {
     margin: 0 auto;
     padding: 0;
@@ -37,80 +38,50 @@ const handleToggle = () => {
 
 header {
   line-height: 1.5;
-  height: 100vh;
   overflow-x: hidden;
 }
 
 .wrapper {
   position: relative;
+  display: flex;
+  flex-direction: row;
 }
 
 .menu-icon {
-  height: 26px;
-    width: 32px;
-    position: absolute;
-    top: 17px;
-    left: 20px;
-    color: var(--color-heading);
-    z-index: 20;
-}
-//  .wrapper {
-//     display: flex;
-//     place-items: center;
-//     justify-content: space-between;
-//   }
-
-  nav {
-    width: 100%;
-    font-size: 12px;
-    text-align: center;
-    margin-top: 2rem;
-  }
-
-  nav a.router-link-exact-active {
-    color: var(--color-text);
-  }
-
-  nav a.router-link-exact-active:hover {
-    background-color: transparent;
-  }
-
-  nav a {
-    display: inline-block;
-    padding: 0 1rem;
-    border-left: 1px solid var(--color-border);
-  }
-
-  nav a:first-of-type {
-    border: 0;
-  }
-
-  // @media (min-width: 1024px) {
-  //   header {
-  //     padding-right: calc(var(--section-gap) / 2);
-  //   }
-
-  //   .header .wrapper {
-  //     flex-wrap: wrap;
-  //   }
-
-  //   nav {
-  //     text-align: left;
-  //     margin-left: -1rem;
-  //     font-size: 1rem;
-  //     padding: 1rem 0;
-  //     margin-top: 1rem;
-  //   }
-  // }
-
-  .menu-icon {
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  position: relative;
+  margin: 0;
+  color: var(--color-heading);
+  z-index: 20;
+  cursor: pointer;
   
+  &.close {
+    display: flex;
+    justify-content: flex-start;
+    padding: 0 15px 0 15px;
+    height: 100vh;
+    background-color: var(--color-background-soft);
+    .icon {
+     left: 0;
+    }
   }
+}
 
-  .menu-icon.active {
-    background-color: lightblue; /* Change this to the desired background color */
+.icon--open {
+  position: absolute;
+  top: 17px;
+  left: 17px;
+}
+
+.icon--close {
+  margin-top: 17px;
+  top: 17px;
+  border-radius: 50%;
+  background-color: var(--color-background);
+  padding: 5px;
+  svg {
+    font-size: 16px;  
   }
+}
 
+  
 </style>
