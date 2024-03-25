@@ -10,6 +10,7 @@ import { useRoute } from 'vue-router';
 
 const route = useRoute();
 const routeChanged = ref(false);
+const carouselOpen = ref(true)
 
 const navbarOpen = ref(false);
 const handleToggle = () => {
@@ -18,6 +19,7 @@ const handleToggle = () => {
 
 watch(() => route.path, (newPath) => {
   routeChanged.value = newPath !== "/";
+  carouselOpen.value = false
 });
 
 </script>
@@ -31,7 +33,7 @@ watch(() => route.path, (newPath) => {
       </div>
       <Navigation :isNavbarOpen="navbarOpen"  :class="{ path: routeChanged }"/> 
     </div>
-    <Carousel :images="carouselImages"></Carousel>
+    <Carousel :images="carouselImages" :isCarouselOpen="carouselOpen"></Carousel>
   </header>
   <RouterView />
 </template>
