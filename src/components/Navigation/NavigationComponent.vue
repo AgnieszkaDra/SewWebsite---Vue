@@ -1,5 +1,5 @@
 <template>
-  <nav class="nav" :class="{ open: props.isNavbarOpen }">
+  <nav class="nav" :class="{ open: props.navigation }">
     <ul>
       <li>
        <RouterLink to="/" class="nav-link">Strona główna</RouterLink> 
@@ -19,8 +19,7 @@ import { defineProps } from 'vue';
 import { RouterLink } from 'vue-router';
 
 const props = defineProps({
-  isNavbarOpen: Boolean, 
-  isMenuOpen: Boolean
+  navigation: Boolean, 
 });
 </script>
 

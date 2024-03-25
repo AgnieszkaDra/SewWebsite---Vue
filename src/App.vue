@@ -3,24 +3,24 @@ import { RouterView } from 'vue-router'
 import HamburgerIcon from './components/icons/IconHamburger.vue'
 import CloseMenuIcon from './components/icons/IconCloseMenu.vue'
 import Navigation from './components/Navigation/NavigationComponent.vue'
+import { navigateOpen } from './hooks/navbarOpen.js'
 
-import { ref } from 'vue';
+const { isNavbarOpen, navbarOpen } = navigateOpen();
 
-const navbarOpen = ref(false);
 const handleToggle = () => {
-  navbarOpen.value = !navbarOpen.value;
-};
+  navbarOpen();
+};;
 
 </script>
 
 <template>
   <header>
     <div class="wrapper">
-      <div class="menu-icon" :class="{ close: navbarOpen }">
-        <HamburgerIcon v-if="!navbarOpen" class="icon--open" @click="handleToggle"/>
+      <div class="menu-icon" :class="{ close: isNavbarOpen }">
+        <HamburgerIcon v-if="!isNavbarOpen" class="icon--open" @click="handleToggle"/>
         <CloseMenuIcon v-else class="icon--close" @click="handleToggle"/>
       </div>
-      <Navigation :isNavbarOpen="navbarOpen"/> 
+      <Navigation :navigation="isNavbarOpen"/> 
     </div>
   </header>
   <RouterView />
