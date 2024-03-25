@@ -19,7 +19,8 @@ import { defineProps } from 'vue';
 import { RouterLink } from 'vue-router';
 
 const props = defineProps({
-  isNavbarOpen: Boolean 
+  isNavbarOpen: Boolean, 
+  isMenuOpen: Boolean
 });
 </script>
 
