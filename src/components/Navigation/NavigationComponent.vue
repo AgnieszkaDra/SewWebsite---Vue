@@ -36,9 +36,7 @@ const props = defineProps({
     margin-top: 0;
     padding: 35px 50px 50px;
     position: relative;
-    &.path {
-      height: 20vh;
-    }
+    z-index: 100;
   } 
   &-link {
     position: relative;

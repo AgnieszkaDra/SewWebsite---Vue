@@ -37,7 +37,7 @@ export default {
 </script>
 
 <template>
-  <div class="container">
+  <div class="carousel">
     <button v-if="images.length > 1" class="arrow prev" @click="goToPrevSlide">&lt;</button>
 
     <div v-if="images.length > 0" 
@@ -56,10 +56,11 @@ export default {
 </template>
 
 <style scoped lang="scss">
-.container {
-    position: relative;
-    width: 100%;
-    height: 100vh;
+.carousel {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  margin-top: -10vh;
 } 
 
 .image {
