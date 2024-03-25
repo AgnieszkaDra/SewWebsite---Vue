@@ -20,17 +20,16 @@ watch(() => route.path, (newPath) => {
   routeChanged.value = newPath !== "/";
 });
 
-
 </script>
 
 <template>
   <header>
     <div class="wrapper">
-      <div @click="handleToggle" class="menu-icon" :class="{ close: navbarOpen }">
-        <HamburgerIcon v-if="!navbarOpen" class="icon--open"/>
-        <CloseMenuIcon v-else class="icon--close"/>
+      <div class="menu-icon" :class="{ close: navbarOpen }">
+        <HamburgerIcon v-if="!navbarOpen || routeChanged" class="icon--open" @click="handleToggle"/>
+        <CloseMenuIcon v-else class="icon--close" @click="handleToggle"/>
       </div>
-      <Navigation :isNavbarOpen="navbarOpen" :class="{ path: routeChanged }"/> 
+      <Navigation :isNavbarOpen="navbarOpen"  :class="{ path: routeChanged }"/> 
     </div>
     <Carousel :images="carouselImages"></Carousel>
   </header>
@@ -92,9 +91,7 @@ header {
   }
 }
 
-.nav {
-  height: 100vh;
-}
+
 
   
 </style>
