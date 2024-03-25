@@ -5,12 +5,22 @@ import CloseMenuIcon from './components/icons/IconCloseMenu.vue'
 import Navigation from './components/Navigation/NavigationComponent.vue'
 import carouselImages from '../data/carousel.js'
 import Carousel from './components/Carousel/CarouselComponent.vue'
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
+import { useRoute } from 'vue-router';
+
+const route = useRoute();
+const routeChanged = ref(false);
 
 const navbarOpen = ref(false);
 const handleToggle = () => {
   navbarOpen.value = !navbarOpen.value;
 };
+
+watch(() => route.path, (newPath) => {
+  routeChanged.value = newPath !== "/";
+});
+
+
 </script>
 
 <template>
@@ -20,7 +30,7 @@ const handleToggle = () => {
         <HamburgerIcon v-if="!navbarOpen" class="icon--open"/>
         <CloseMenuIcon v-else class="icon--close"/>
       </div>
-      <Navigation :isNavbarOpen="navbarOpen"/> 
+      <Navigation :isNavbarOpen="navbarOpen" :class="{ path: routeChanged }"/> 
     </div>
     <Carousel :images="carouselImages"></Carousel>
   </header>
@@ -58,7 +68,6 @@ header {
     display: flex;
     justify-content: flex-start;
     padding: 0 15px 0 15px;
-    height: 100vh;
     background-color: var(--color-background-soft);
     .icon {
      left: 0;
@@ -81,6 +90,10 @@ header {
   svg {
     font-size: 16px;  
   }
+}
+
+.nav {
+  height: 100vh;
 }
 
   

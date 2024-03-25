@@ -31,10 +31,13 @@ const props = defineProps({
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-top: 0;
     height: 100vh;
+    margin-top: 0;
     padding: 35px 50px 50px;
     position: relative;
+    &.path {
+      height: 20vh;
+    }
   } 
   &-link {
     position: relative;
