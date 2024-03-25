@@ -5,9 +5,6 @@ export default {
       type: Array,
       required: true
     },
-    isCarouselOpen: {
-      type: Boolean,
-    },
     interval: {
       type: Number,
       default: 3000
@@ -40,7 +37,7 @@ export default {
 </script>
 
 <template>
-  <div class="carousel" :class="{ open: isCarouselOpen }">
+  <div class="carousel">
     <button v-if="images.length > 1" class="arrow prev" @click="goToPrevSlide">&lt;</button>
 
     <div v-if="images.length > 0" 
@@ -60,13 +57,10 @@ export default {
 
 <style scoped lang="scss">
 .carousel {
-  display: none;
-  &.open {
-    display: block;
-    position: relative;
-    width: 100%;
-    height: 100vh;
-  }
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  margin-top: -10vh;
 } 
 
 .image {

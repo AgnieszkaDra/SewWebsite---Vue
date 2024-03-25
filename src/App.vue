@@ -3,24 +3,13 @@ import { RouterView } from 'vue-router'
 import HamburgerIcon from './components/icons/IconHamburger.vue'
 import CloseMenuIcon from './components/icons/IconCloseMenu.vue'
 import Navigation from './components/Navigation/NavigationComponent.vue'
-import carouselImages from '../data/carousel.js'
-import Carousel from './components/Carousel/CarouselComponent.vue'
-import { ref, watch } from 'vue';
-import { useRoute } from 'vue-router';
 
-const route = useRoute();
-const routeChanged = ref(false);
-const carouselOpen = ref(true)
+import { ref } from 'vue';
 
 const navbarOpen = ref(false);
 const handleToggle = () => {
   navbarOpen.value = !navbarOpen.value;
 };
-
-watch(() => route.path, (newPath) => {
-  routeChanged.value = newPath !== "/";
-  carouselOpen.value = false
-});
 
 </script>
 
@@ -28,12 +17,11 @@ watch(() => route.path, (newPath) => {
   <header>
     <div class="wrapper">
       <div class="menu-icon" :class="{ close: navbarOpen }">
-        <HamburgerIcon v-if="!navbarOpen || routeChanged" class="icon--open" @click="handleToggle"/>
+        <HamburgerIcon v-if="!navbarOpen" class="icon--open" @click="handleToggle"/>
         <CloseMenuIcon v-else class="icon--close" @click="handleToggle"/>
       </div>
-      <Navigation :isNavbarOpen="navbarOpen"  :class="{ path: routeChanged }"/> 
+      <Navigation :isNavbarOpen="navbarOpen"/> 
     </div>
-    <Carousel :images="carouselImages" :isCarouselOpen="carouselOpen"></Carousel>
   </header>
   <RouterView />
 </template>
@@ -50,6 +38,7 @@ watch(() => route.path, (newPath) => {
 header {
   line-height: 1.5;
   overflow-x: hidden;
+  min-height: 10vh;
 }
 
 .wrapper {

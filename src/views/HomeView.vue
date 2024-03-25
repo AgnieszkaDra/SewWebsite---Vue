@@ -1,9 +1,14 @@
 <script setup lang="ts">
-import TheWelcome from '../components/TheWelcome.vue'
+  import carouselImages from '../../data/carousel.js'
+  import Carousel from '../components/Carousel/CarouselComponent.vue'
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
+  <main class="main">
+    <Carousel :images="carouselImages"></Carousel>
   </main>
 </template>
+
+
+
+
