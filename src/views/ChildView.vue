@@ -1,6 +1,7 @@
 <template>
-  <section class="section categories">
-    <div 
+  <section class="section">
+    <div class="categories">
+      <div 
         class="category__content"
         v-for="product in products" 
         :key="product.id"
@@ -13,6 +14,7 @@
             <FontAwesomeIcon :icon="faArrowRight" />
           </div>
         </a>
+      </div>
     </div>
   </section>
 </template>
@@ -122,3 +124,4 @@ const products = computed(() => productsStore.products);
     }
 }
 </style>
+
