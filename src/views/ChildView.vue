@@ -50,16 +50,16 @@ const products = computed(() => productsStore.products);
 }
 
 .category {
-    height: 400px;
-    padding: 50px 50px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    filter: grayscale(80%);
-
     &__content {
-        display: grid;
-        grid-template-rows: 200px 100px;
+      height: 400px;
+      padding: 50px 50px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      color: var(--color-text-dark);
+      filter: grayscale(80%);
+      display: grid;
+      grid-template-rows: 200px 100px;
        
         h2 {
             text-align: right;
