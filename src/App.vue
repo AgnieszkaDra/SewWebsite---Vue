@@ -4,12 +4,41 @@ import HamburgerIcon from './components/icons/IconHamburger.vue'
 import CloseMenuIcon from './components/icons/IconCloseMenu.vue'
 import Navigation from './components/Navigation/NavigationComponent.vue'
 import { navigateOpen } from './hooks/navbarOpen.js'
+import { onMounted } from 'vue'
+import { useProductsStore } from './stores/products';
+import products from '../data/products';
 
 const { isNavbarOpen, navbarOpen } = navigateOpen();
 
 const handleToggle = () => {
   navbarOpen();
-};;
+};
+
+const productsStore = useProductsStore();
+
+onMounted(() => {
+  const transformedProducts = products.map(product => {
+    const itemsArray = product.items.map(item => ({
+      title: item.title,
+      image: item.image,
+      price: item.price,
+      features: item.features || [] 
+    }));
+
+    return {
+      name: product.name,
+      id: product.id,
+      items: itemsArray,
+      background: product.background,
+      collection: product.collection
+    };
+  });
+
+  productsStore.$patch({
+    products: transformedProducts
+  });
+
+});
 
 </script>
 
