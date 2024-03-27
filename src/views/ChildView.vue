@@ -57,7 +57,6 @@ const products = computed(() => productsStore.products);
       background-repeat: no-repeat;
       background-position: center;
       color: var(--color-text-dark);
-      filter: grayscale(80%);
       display: grid;
       grid-template-rows: 200px 100px;
        
