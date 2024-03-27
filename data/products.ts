@@ -8,8 +8,9 @@ import blouseSkateboards1a from '../src/assets/Blouses/Skateboards/skateboards.1
 import blouseViolet from '../src/assets/Blouses/Violet/Violet.1a.jpg'
 import trousersRabbit1a from '../src/assets/Trousers/trusersWithRabbit.1a.jpg'
 import dressCherry1b from '../src/assets/Skirts and Dresses/Cherry/cherry.1b.jpg'
+import band1a from '../src/assets/Banding/Band.1a.jpg'
 
-enum Collection { CHILD = 'Child', MOTHER = 'Mother', BLOUSES = 'Blouses', TROUSERS = 'TROUSERS', DRESSES = 'SKIRTS AND DRESSES' }
+enum Collection { CHILD = 'Child', Woman = 'Kobieta', BLOUSES = 'Blouses', TROUSERS = 'TROUSERS', DRESSES = 'SKIRTS AND DRESSES' }
 
 export const products: Products = [
   {
@@ -74,6 +75,21 @@ export const products: Products = [
     background: dressCherry1b,
     collection: ['Child', 'SKIRTS AND DRESSES']
   },
+  {
+    name: 'Opaski',
+    id: uuidv4(),
+    items: [
+          {
+            title: 'Opaski',
+            image: band1a,
+            price: 100,
+            features:  [ 'oryginalny krój', 'piękne wykończenie' ]
+          },
+    ],
+    background: band1a,
+    collection: ['Child', 'Kobieta']
+  },
+
 ]
 
 export default products

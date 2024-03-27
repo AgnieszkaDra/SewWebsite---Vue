@@ -26,7 +26,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 const productsStore = useProductsStore();
-const products = computed(() => productsStore.products);
+const products = computed(() => productsStore.sortedProductsByCollection('Child'));
 
 </script>
 
